@@ -31,17 +31,26 @@ export function AttendeeList() {
     const totalPages = Math.ceil(total / 10)
 
     useEffect(() => {
-        fetch(`http://localhost:3333/events/9e9bd979-9d10-4915-b339-3786b1634f33/attendees?pageIndex=${page - 1}`)
+        const url = new URL('http://localhost:3333/events/9e9bd979-9d10-4915-b339-3786b1634f33/attendees')
+
+        url.searchParams.set('pageIndex', String(page - 1))
+
+        if(search.length > 0){
+          url.searchParams.set('query', search)
+        }
+
+        fetch(url)
         .then(response => response.json())
         .then(data => {
             console.log(data)
             setAttendees(data.attendees)
             setTotal(data.total)
         })
-    }, [page])
+    }, [page, search])
 
     function onSearchInputChanged(event: ChangeEvent<HTMLInputElement>) {
         setSearch(event.target.value)
+        setPage(1)
     }
 
     function goToNextPage() {
@@ -66,9 +75,10 @@ export function AttendeeList() {
                 <h1 className='text-2xl font-bold'>Participantes</h1>
                 <div className="px-3 py-1.5 w-72 border border-white/10 bg-transparent rounded-lg text-sm flex items-center gap-3">
                     <Search className='size-4' />
-                    <input onChange={onSearchInputChanged} className="bg-transparent flex-1 outline-none border-0 p-0 text-sm" placeholder="Buscar participantes..." />
+                    <input onChange={onSearchInputChanged} 
+                    className="bg-transparent flex-1 outline-none border-0 p-0 text-sm focus:ring-0" placeholder="Buscar participantes..." />
                 </div>
-                {search}
+            
             </div>
             <Table>
                 <thead>
