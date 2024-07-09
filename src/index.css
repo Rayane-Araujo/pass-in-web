@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+input[type="checkbox"] {
+    background-color: #212121;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+    color: #F48F56;
+}
+
+input[type="checkbox"]:focus {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+}

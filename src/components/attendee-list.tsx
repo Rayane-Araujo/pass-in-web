@@ -114,19 +114,18 @@ export function AttendeeList() {
                     className="bg-transparent flex-1 outline-none border-0 p-0 text-sm focus:ring-0" placeholder="Buscar participantes..."
                     value={search}/>
                 </div>
-            
             </div>
             <Table>
                 <thead>
                     <tr className='border-b border-white/10'>
                         <TableHeader style={{ width: 64 }}>
-                            <input className='size-4 bg-black/20 rounded border-white/10' type="checkbox" />
+                            <input className='size-4 my-3 mx-5 rounded' type="checkbox" />
                         </TableHeader>
                         <TableHeader>Código</TableHeader>
                         <TableHeader>Participante</TableHeader>
                         <TableHeader>Data de inscrição</TableHeader>
                         <TableHeader>Data do check-in</TableHeader>
-                        <TableHeader style={{ width: 64 }} className='py-3 px-2.5 font-text-left'></TableHeader>
+                        <TableHeader style={{ width: 64 }} className='py-4 px-4'></TableHeader>
                     </tr>
                 </thead>
                 <tbody>
@@ -134,7 +133,7 @@ export function AttendeeList() {
                         return (
                             <TableRow key={attendee.id}>
                                 <TableCell>
-                                    <input className='size-4 bg-black/20 rounded border-white/10' type="checkbox" />
+                                    <input className='size-4 my-3 mx-4 rounded' type="checkbox" />
                                 </TableCell>
                                 <TableCell>{attendee.id}</TableCell>
                                 <TableCell>
